@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'maven'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //repository(url: "http://192.168.0.185:8081/content/repositories/test") { //nexus2
+            repository(url: "http://localhost:8081/repository/snap") { //nexus3
+                authentication(userName: "$System.env.NEXUSUSER", password: "$System.env.NEXUSPASS")
+            }
+            pom.version = "5.3.0-SNAPSHOT"
+            pom.artifactId = "${project.name}"
+            pom.groupId = "com.example.kai.test"
+        }
+    }
+}
+
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+
+    defaultConfig {
+        applicationId "com.example.kai.test"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:24.2.0'
+}
