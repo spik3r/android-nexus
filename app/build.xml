@@ -1,0 +1,16 @@
+<project name="gradle-wrapper" default="upload" basedir=".">
+	<description>
+    </description>
+	<!-- set global properties for this build -->
+	<property environment="env" />
+	<property name="gradle.executable" value="${basedir}/gradlew" />
+
+	<target name="upload">
+		<exec executable="${gradle.executable}" failonerror="true">
+			<arg value="uploadArchives" />
+		</exec>
+    <echo message="test 123"/>
+	</target>
+
+
+</project>

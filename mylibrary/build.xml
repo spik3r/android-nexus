@@ -1,0 +1,35 @@
+<project name="gradle-wrapper" default="" basedir=".">
+	<description>
+    </description>
+	<!-- set global properties for this build -->
+	<property environment="env" />
+	<property name="gradle.executable" location="${env.GRADLE_HOME}/bin/gradle" />
+	
+	<target name="jar">
+		<exec executable="${gradle.executable}" dir=".">
+			<arg value="jar" />
+		</exec>
+	</target>
+	
+	<target name="dist">
+		<exec executable="${gradle.executable}" dir=".">
+			<arg value="dist" />
+		</exec>
+	</target>
+	<target name="clean">
+		<exec executable="${gradle.executable}" dir=".">
+			<arg value="clean" />
+		</exec>
+	</target>
+	<target name="test">
+		<exec executable="${gradle.executable}" dir=".">
+			<arg value="test" />
+		</exec>
+	</target>
+	<target name="eclipse">
+		<exec executable="${gradle.executable}" dir=".">
+			<arg value="eclipse" />
+		</exec>
+	</target>
+<echo message="test 123"/>
+</project>
